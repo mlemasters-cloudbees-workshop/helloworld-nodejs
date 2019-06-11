@@ -9,6 +9,9 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '2'))
     skipDefaultCheckout true
   }
+  triggers {
+    eventTrigger simpleMatch('hello-api-eli')
+  }
   stages {
     stage('Test') {
       agent { label 'nodejs-app' }
